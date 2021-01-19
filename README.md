@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://www.linkedin.com/in/carloseac/">
-    <img alt="Carlos Cardoso" src="https://img.shields.io/badge/-CarlosEAC-8257E5?style=flat&logo=Linkedin&logoColor=white" />
+    <img alt="Carlos Cardoso" src="https://img.shields.io/badge/-CarlosEAC-009db9?style=flat&logo=Linkedin&logoColor=white" />
   </a>
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/CarlosEduAC/Happy?color=009bd9">
@@ -15,14 +15,12 @@
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CarlosEduAC/Happy?color=009bd9">
   </a>
 
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-8257E5">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-009db9">
 
   <a href="https://github.com/CarlosEduAC/Happy/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/CarlosEduAC/Happy?color=8257E5&logo=github">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/CarlosEduAC/Happy?color=009db9&logo=github">
   </a>
 </p>
-
-> :rocket: Uma API REST para manter uma coleção de planetas do universo Star Wars.
 
 <div align="center">
   <sub>Desafio BackEnd B2W. Construído por
@@ -69,11 +67,11 @@ Esse projeto foi feito utilizando as seguintes tecnologias:
 
 ### Insominia Screenshot
 <div style="display: flex; flex-direction: 'row'; align-items: 'center';">
-   <img src="./.github/Get.png" width="400px">
-   <img src="./.github/Post.png" width="400px">
-   <img src="./.github/FindById.png" width="400px">
-   <img src="./.github/FindByName.png" width="400px">
-   <img src="./.github/Delete.png" width="400px">
+   <img src="./.github/Get.png" width="800px">
+   <img src="./.github/Post.png" width="800px">
+   <img src="./.github/FindById.png" width="800px">
+   <img src="./.github/FindByName.png" width="800px">
+   <img src="./.github/Delete.png" width="800px">
 </div>
 
 <!-- # :eyes: Site de Demostração
