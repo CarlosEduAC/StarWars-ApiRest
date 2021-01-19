@@ -1,18 +1,17 @@
 import { Router } from 'express';
 import { getMongoRepository } from "typeorm";
 
-import CreatePlanetService from '@modules/planets/services/CreatePlanetService';
-import DeletePlanetService from '@modules/planets/services/DeletePlanetService';
+import CreatePlanetService from '../services/CreatePlanetService';
+import DeletePlanetService from '../services/DeletePlanetService';
 
-import Planet from '@modules/planets/infra/typeorm/entities/Planet';
+import Planet from '../models/Planet';
 
 const PlanetRouter = Router();
 
 PlanetRouter.get('/', async (request, response) => {
-  console.log('Aqui')
   const planetRepository = getMongoRepository(Planet);
+
   const planets = await planetRepository.find();
-  console.log(planets);
 
   return response.json({ planets });
 });

@@ -6,5 +6,5 @@
   "useUnifiedTopology": true,
   "logging": true,
   "ssl": true,
-  "entities": ["./src/modules/planets/infra/typeorm/entities/*.ts"]
+  "entities": ["./src/models/*.ts"]
 }

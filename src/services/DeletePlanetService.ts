@@ -1,8 +1,8 @@
 import { getMongoRepository } from "typeorm";
 
-import AppError from '@shared/errors/AppError';
+import AppError from '../errors/AppError';
 
-import Planet from '../infra/typeorm/entities/Planet';
+import Planet from '../models/Planet';
 
 interface Request {
   id: string;

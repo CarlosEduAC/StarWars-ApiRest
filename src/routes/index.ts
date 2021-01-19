@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import PlanetRouter from '@modules/planets/infra/http/routes/planet.routes';
+import PlanetRouter from './planet.routes';
 
 const routes = Router();
 

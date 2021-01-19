@@ -5,10 +5,10 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 
-import routes from '@shared/infra/http/routes';
-import AppError from '@shared/errors/AppError';
+import routes from './routes';
+import AppError from './errors/AppError';
 
-import '@shared/infra/typeorm';
+import './database';
 
 const app = express();
 

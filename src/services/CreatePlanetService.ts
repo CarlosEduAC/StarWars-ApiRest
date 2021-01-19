@@ -1,9 +1,9 @@
 import { getMongoRepository } from "typeorm";
 import axios from 'axios';
 
-import AppError from '@shared/errors/AppError';
+import AppError from '../errors/AppError';
 
-import Planet from '../infra/typeorm/entities/Planet';
+import Planet from '../models/Planet';
 
 interface Request {
   name: string;
