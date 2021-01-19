@@ -9,10 +9,9 @@ import Planet from '@modules/planets/infra/typeorm/entities/Planet';
 const PlanetRouter = Router();
 
 PlanetRouter.get('/', async (request, response) => {
-  console.log('Aqui')
   const planetRepository = getMongoRepository(Planet);
+
   const planets = await planetRepository.find();
-  console.log(planets);
 
   return response.json({ planets });
 });
