@@ -1,4 +1,4 @@
-import { getMongoRepository } from "typeorm";
+import { getMongoManager } from "typeorm";
 import axios from 'axios';
 
 import AppError from '../errors/AppError';
@@ -32,8 +32,8 @@ class CreatePlanetService {
       throw new AppError('Please enter a valid planet name!');
     }
 
-    const planetRepository = getMongoRepository(Planet);
-    await planetRepository.save(planet);
+    const planetManager = getMongoManager();
+    await planetManager.save(planet);
 
     return planet;
   }

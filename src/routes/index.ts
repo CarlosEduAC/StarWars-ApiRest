@@ -4,6 +4,6 @@ import PlanetRouter from './planet.routes';
 
 const routes = Router();
 
-routes.use('/planet', PlanetRouter);
+routes.use('/planets', PlanetRouter);
 
 export default routes;

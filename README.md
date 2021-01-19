@@ -67,11 +67,11 @@ Esse projeto foi feito utilizando as seguintes tecnologias:
 
 ### Insominia Screenshot
 <div style="display: flex; flex-direction: 'row'; align-items: 'center';">
-   <img src="./.github/Get.png" width="800px">
-   <img src="./.github/Post.png" width="800px">
-   <img src="./.github/FindById.png" width="800px">
-   <img src="./.github/FindByName.png" width="800px">
-   <img src="./.github/Delete.png" width="800px">
+  <img src="./.github/Get.png" width="800px">
+  <img src="./.github/Post.png" width="800px">
+  <img src="./.github/FindById.png" width="800px">
+  <img src="./.github/FindByName.png" width="800px">
+  <img src="./.github/Delete.png" width="800px">
 </div>
 
 <!-- # :eyes: Site de Demostração
