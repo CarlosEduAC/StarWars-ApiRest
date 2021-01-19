@@ -1,0 +1,10 @@
+{
+  "type": "mongodb",
+  "url": "mongodb+srv://mongodb:root@clusterplanets.h5k8a.mongodb.net/starwars?retryWrites=true&w=majority",
+  "useNewUrlParser": true,
+  "synchronize": true,
+  "useUnifiedTopology": true,
+  "logging": true,
+  "ssl": true,
+  "entities": ["./src/modules/planets/infra/typeorm/entities/*.ts"]
+}
