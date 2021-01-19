@@ -1,7 +1,7 @@
 <div class="bg-gray-dark">
-  <p align="center">
-    # Desafio Star Wars Node.js
-  </p>
+  <h1 align="center">
+    Desafio Star Wars Node.js
+  </h1>
 </div>
 
 <p align="center">
