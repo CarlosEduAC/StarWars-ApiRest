@@ -3,6 +3,7 @@ import { getMongoRepository } from "typeorm";
 
 import CreatePlanetService from '../services/CreatePlanetService';
 import DeletePlanetService from '../services/DeletePlanetService';
+import UpdatePlanetService from '../services/UpdatePlanetService';
 
 import Planet from '../models/Planet';
 
@@ -48,6 +49,22 @@ PlanetRouter.post('/', async(request, response) => {
   });
 
   return response.status(201).json(planet);
+});
+
+PlanetRouter.put('/:id', async(request, response) => {
+  const { id, name, climate, numberOfFilms, terrain } = request.body;
+
+  const updatePlanet = new UpdatePlanetService();
+
+  const planet = await updatePlanet.execute({
+    id,
+    name,
+    climate,
+    numberOfFilms,
+    terrain
+  });
+
+  return response.status(200).send(planet);
 });
 
 PlanetRouter.delete('/:id', async(request, response) => {

@@ -41,7 +41,7 @@ class UpdatePlanetService {
       throw new AppError('Please enter a valid value!');
     }
 
-    await planetManager.updateOne(Planet, { id }, planet);
+    await planetManager.save(Planet, planet);
 
     return planet;
   }

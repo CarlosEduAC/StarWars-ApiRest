@@ -40,6 +40,11 @@ describe('Planet', () => {
       ]),
     );
 
+    const planetRepository = getMongoRepository(Planet);
+
+    await planetRepository.deleteOne({ name: 'Tatooine' });
+    await planetRepository.deleteOne({ name: 'Alderaan' });
+
     done();
   });
 
@@ -58,6 +63,41 @@ describe('Planet', () => {
       terrain: 'Jungle, Rainforests',
       numberOfFilms: 1
     });
+
+    const planetsRepository = getMongoRepository(Planet);
+
+    await planetsRepository.deleteOne({ name: 'Yavin IV' });
+
+    done();
+  });
+
+  it('should be able to update a planet', async (done) => {
+    const response = await request(app).post('/planets').send({
+      name: 'Outro',
+      climate: 'Temperate',
+      terrain: 'Gas Giant'
+    });
+
+    await request(app).put(`/planets/${response.body.id}`).send({
+      id: response.body.id,
+      name: 'Bespin',
+      climate: 'Temperate',
+      terrain: 'Gas Giant',
+      numberOfFilms: 1
+    });
+
+    const planetsRepository = getMongoRepository(Planet);
+
+    const planet = await planetsRepository.findOne(response.body.id);
+
+    expect(planet).toMatchObject({
+      name: 'Bespin',
+      climate: 'Temperate',
+      terrain: 'Gas Giant',
+      numberOfFilms: 1
+    });
+
+    await planetsRepository.deleteOne({ name: 'Bespin' });
 
     done();
   });
@@ -92,6 +132,10 @@ describe('Planet', () => {
       terrain: 'Swamp, Jungles',
       numberOfFilms: 3
     });
+
+    const planetRepository = getMongoRepository(Planet);
+
+    await planetRepository.deleteOne({ name: 'Dagobah' });
 
     done();
   });
