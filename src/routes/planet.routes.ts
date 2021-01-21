@@ -1,17 +1,63 @@
 import { Router } from 'express';
-import PlanetRepository from '../repositories/PlanetRepository';
+import { getMongoRepository } from "typeorm";
+
+import CreatePlanetService from '../services/CreatePlanetService';
+import DeletePlanetService from '../services/DeletePlanetService';
+
+import Planet from '../models/Planet';
 
 const PlanetRouter = Router();
-const planetRepository = new PlanetRepository();
 
-PlanetRouter.get('/', planetRepository.show);
+PlanetRouter.get('/', async(request, response) => {
+  const planetRepository = getMongoRepository(Planet);
 
-PlanetRouter.get('/:id', planetRepository.findById);
+  const planets = await planetRepository.find();
 
-PlanetRouter.get('/name/:name', planetRepository.findByName);
+  return response.json({ planets });
+});
 
-PlanetRouter.post('/', planetRepository.create);
+PlanetRouter.get('/:id', async(request, response) => {
+  const { id } = request.params;
 
-PlanetRouter.delete('/:id', planetRepository.delete);
+  const planetRepository = getMongoRepository(Planet);
+
+  const planet = await planetRepository.findOne(id);
+
+  return response.json(planet);
+});
+
+PlanetRouter.get('/name/:name', async(request, response) => {
+  const name = request.params;
+
+  const planetRepository = getMongoRepository(Planet);
+
+  const planet = await planetRepository.findOne(name);
+
+  return response.json(planet);
+});
+
+PlanetRouter.post('/', async(request, response) => {
+  const { name, climate, terrain } = request.body;
+
+  const createPlanet = new CreatePlanetService();
+
+  const planet = await createPlanet.execute({
+    name,
+    climate,
+    terrain,
+  });
+
+  return response.status(201).json(planet);
+});
+
+PlanetRouter.delete('/:id', async(request, response) => {
+  const { id } = request.params;
+
+  const deletePlanet = new DeletePlanetService();
+
+  await deletePlanet.execute({ id });
+
+  return response.status(204).send();
+});
 
 export default PlanetRouter;

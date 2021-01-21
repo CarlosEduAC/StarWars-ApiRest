@@ -5,25 +5,54 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
+import { IsInt, Length } from "class-validator";
+
 @Entity()
 class Planet {
   @ObjectIdColumn()
-  id: string;
+  private id: string;
 
   @Column()
-  name: string;
+  @Length(1, 120)
+  private name: string;
 
   @Column()
-  climate: string;
+  @Length(1, 120)
+  private climate: string;
 
   @Column()
-  numberOfFilms: number;
+  @IsInt()
+  private numberOfFilms: number;
 
   @Column()
-  terrain: string;
+  @Length(1, 120)
+  private terrain: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  private created_at: Date;
+
+  constructor(name: string, climate: string, numberOfFilms: number, terrain: string) {
+    this.name = name;
+    this.climate = climate;
+    this.numberOfFilms = numberOfFilms;
+    this.terrain = terrain;
+  }
+
+  public setName(name: string) {
+    this.name = name;
+  }
+
+  public setClimate(climate: string) {
+    this.climate = climate;
+  }
+
+  public setNumberOfFilms(numberOfFilms: number) {
+    this.numberOfFilms = numberOfFilms;
+  }
+
+  public setTerrain(terrain: string) {
+    this.terrain = terrain;
+  }
 }
 
 export default Planet;

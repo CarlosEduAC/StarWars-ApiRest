@@ -6,12 +6,13 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/server.ts",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "class-validator": "^0.13.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

@@ -2,7 +2,6 @@
   "type": "mongodb",
   "useNewUrlParser": true,
   "synchronize": true,
-  "useUnifiedTopology": true,
   "logging": true,
   "ssl": true,
   "entities": ["./src/models/*.ts"]

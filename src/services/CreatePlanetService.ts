@@ -1,5 +1,7 @@
 import { getMongoManager } from "typeorm";
-import axios from 'axios';
+import { validate } from "class-validator";
+
+import ConsumeSwapiService from './ConsumeSwapiService';
 
 import AppError from '../errors/AppError';
 
@@ -13,26 +15,28 @@ interface Request {
 
 class CreatePlanetService {
   public async execute({ name, climate, terrain }: Request): Promise<Planet> {
-    const planet = new Planet();
+    const consumeSwapi = new ConsumeSwapiService()
 
-    if (!name && !climate && !terrain) {
+    const { numberOfFilms } = await consumeSwapi.execute({ name });
+
+    const planet = new Planet(name, climate, numberOfFilms, terrain);
+
+    const validatePlanet = await validate(planet);
+
+    if (validatePlanet.length > 0) {
       throw new AppError('Please enter a valid value!');
     }
 
-    try {
-      const planetsSwapi = await axios.get(`https://swapi.dev/api/planets/?search=${name}`);
+    const planetManager = getMongoManager();
 
-      planet.name = name;
-      planet.climate = climate;
-      planet.terrain = terrain;
-      planet.numberOfFilms = planetsSwapi.data.count === 1
-                              ? planetsSwapi.data.results[0].films.length
-                              : 0;
-    } catch {
-      throw new AppError('Please enter a valid planet name!');
+    const checkPlanetExists = await planetManager.findOne<object>(Planet, {
+      name
+    });
+
+    if (Boolean(checkPlanetExists)) {
+      throw new AppError('Planet does exists. Try another!');
     }
 
-    const planetManager = getMongoManager();
     await planetManager.save(planet);
 
     return planet;
