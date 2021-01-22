@@ -1,7 +1,5 @@
 import { createConnection, getConnectionOptions, Connection } from 'typeorm';
 
-import baseUrls from '../config/baseUrls';
-
 export default async (name = 'default'): Promise<Connection> => {
   const defaultOptions = await getConnectionOptions();
 
@@ -10,8 +8,8 @@ export default async (name = 'default'): Promise<Connection> => {
       name,
       url:
         process.env.NODE_ENV === 'test'
-          ? baseUrls.test
-          : baseUrls.development
+          ? process.env.MONGO_URL_TEST
+          : process.env.MONGO_URL_DEVELOPMENT
     }),
   );
 };
