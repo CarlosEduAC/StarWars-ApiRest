@@ -7,10 +7,14 @@ export default async (name = 'default'): Promise<Connection> => {
     ? process.env.MONGO_URL_TEST
     : process.env.MONGO_URL;
 
+  const entities = process.env.NODE_ENV === 'production'
+    ? ["./dist/models/*.ts"] : ["./src/models/*.ts"];
+
   return createConnection(
     Object.assign(defaultOptions, {
       name,
-      url: url
+      url: url,
+      entities
     }),
   );
 };
