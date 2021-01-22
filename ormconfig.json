@@ -1,5 +1,6 @@
 {
   "type": "mongodb",
+  "useUnifiedTopology": false,
   "useNewUrlParser": true,
   "synchronize": true,
   "logging": true,

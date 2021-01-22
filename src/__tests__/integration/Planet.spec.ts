@@ -6,7 +6,7 @@ import app from '../../app';
 import Planet from '../../models/Planet';
 
 describe('Planet', () => {
-  it('should be able to list the planets', async (done) => {
+  it('should be able to list the planets', async () => {
     await request(app).post('/planets').send({
       name: 'Tatooine',
       climate: 'Arid',
@@ -44,11 +44,9 @@ describe('Planet', () => {
 
     await planetRepository.deleteOne({ name: 'Tatooine' });
     await planetRepository.deleteOne({ name: 'Alderaan' });
-
-    done();
   });
 
-  it('should be able to create a new planet', async (done) => {
+  it('should be able to create a new planet', async () => {
     const response = await request(app).post('/planets').send({
       name: 'Yavin IV',
       climate: 'Temperate, Tropical',
@@ -67,11 +65,9 @@ describe('Planet', () => {
     const planetsRepository = getMongoRepository(Planet);
 
     await planetsRepository.deleteOne({ name: 'Yavin IV' });
-
-    done();
   });
 
-  it('should be able to update a planet', async (done) => {
+  it('should be able to update a planet', async () => {
     const response = await request(app).post('/planets').send({
       name: 'Outro',
       climate: 'Temperate',
@@ -98,11 +94,9 @@ describe('Planet', () => {
     });
 
     await planetsRepository.deleteOne({ name: 'Bespin' });
-
-    done();
   });
 
-  it('should be able to find the planet by the id', async (done) => {
+  it('should be able to find the planet by the id', async () => {
     const response = await request(app).post('/planets').send({
       name: 'Dagobah',
       climate: 'Murky',
@@ -119,11 +113,9 @@ describe('Planet', () => {
       terrain: 'Swamp, Jungles',
       numberOfFilms: 3
     });
-
-    done();
   });
 
-  it('should be able to find the planet by the name', async (done) => {
+  it('should be able to find the planet by the name', async () => {
     const response = await request(app).get('/planets/name/Dagobah');
 
     expect(response.body).toMatchObject({
@@ -136,11 +128,9 @@ describe('Planet', () => {
     const planetRepository = getMongoRepository(Planet);
 
     await planetRepository.deleteOne({ name: 'Dagobah' });
-
-    done();
   });
 
-  it('should be able to delete a planet', async (done) => {
+  it('should be able to delete a planet', async () => {
     const planetsRepository = getMongoRepository(Planet);
 
     const response = await request(app).post('/planets').send({
@@ -154,7 +144,5 @@ describe('Planet', () => {
     const planet = await planetsRepository.findOne(response.body.id);
 
     expect(planet).toBeFalsy();
-
-    done();
   });
 });
