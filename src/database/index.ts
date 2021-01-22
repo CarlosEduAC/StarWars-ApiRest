@@ -8,7 +8,7 @@ export default async (name = 'default'): Promise<Connection> => {
   return createConnection(
     Object.assign(defaultOptions, {
       name,
-      useUnifiedTopology: process.env.NODE_ENV === 'test' ? false : true,
+      // useUnifiedTopology: process.env.NODE_ENV === 'test' ? false : true,
       url:
         process.env.NODE_ENV === 'test'
           ? baseUrls.test
