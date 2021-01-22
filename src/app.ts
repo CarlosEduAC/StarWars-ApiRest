@@ -31,8 +31,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
   return response.status(500).json({
     status: 'error',
-    message: err,
-    env: process.env.NODE_ENV
+    message: err
     // message: 'Internal server error',
   });
 });
