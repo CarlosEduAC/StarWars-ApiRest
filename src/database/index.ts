@@ -6,7 +6,10 @@ export default async (name = 'default'): Promise<Connection> => {
   return createConnection(
     Object.assign(defaultOptions, {
       name,
-      url: 'mongodb+srv://mongodb:root@clusterplanets.h5k8a.mongodb.net/starwars?retryWrites=true&w=majority'
+      url:
+        process.env.NODE_ENV === 'test'
+          ? process.env.MONGO_URL_TEST
+          : process.env.MONGO_URL_DEVELOPMENT
     }),
   );
 };
