@@ -5,5 +5,5 @@
   "synchronize": true,
   "logging": true,
   "ssl": true,
-  "entities": ["./src/models/*.ts"]
+  "entities": ["./src/models/*.*"]
 }
