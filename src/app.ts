@@ -13,7 +13,7 @@ import * as swaggerDocument from './swagger.json';
 
 import createConnection from './database';
 
-createConnection();
+process.env.NODE_ENV !== 'test' && createConnection();
 const app = express();
 
 app.use(express.json());

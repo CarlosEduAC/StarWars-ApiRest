@@ -5,7 +5,7 @@ export default async (name = 'default'): Promise<Connection> => {
 
   const url = process.env.NODE_ENV === 'test'
     ? process.env.MONGO_URL_TEST
-    : process.env.MONGO_URL_DEVELOPMENT;
+    : process.env.MONGO_URL;
 
   return createConnection(
     Object.assign(defaultOptions, {
