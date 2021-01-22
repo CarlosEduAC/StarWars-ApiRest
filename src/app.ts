@@ -10,7 +10,7 @@ import AppError from './errors/AppError';
 
 import createConnection from './database';
 
-createConnection();
+process.env.NODE_ENV !== 'test' && createConnection();
 const app = express();
 
 app.use(express.json());

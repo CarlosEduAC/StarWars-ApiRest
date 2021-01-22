@@ -1,26 +1,28 @@
+import { getConnection } from 'typeorm';
+
+import createConnection from '../../database';
+
 import DeletePlanetService from '../../services/DeletePlanetService';
 
 describe('Consume Swapi', () => {
-  it('should be able to validate planet', async (done) => {
-
-
-    done();
+  beforeAll(async () => {
+    await createConnection();
   });
 
-  it('should be able to validate planet', async (done) => {
+  afterAll(async () => {
+    const connection = await getConnection();
 
-
-    done();
+    connection.close();
   });
 
-  it('should be able to validate planet', async (done) => {
+  it('should be able to validate the not existence of a planet', async (done) => {
+    const deletePlanet = new DeletePlanetService();
 
-
-    done();
-  });
-
-  it('should be able to validate planet', async (done) => {
-
+    try {
+      await deletePlanet.execute({ id: 'id1234567890' });
+    } catch (e) {
+      expect(e.message).toBe("Planet does not exists!");
+    }
 
     done();
   });

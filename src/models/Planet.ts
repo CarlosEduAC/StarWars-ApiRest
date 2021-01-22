@@ -53,6 +53,10 @@ class Planet {
   public setTerrain(terrain: string) {
     this.terrain = terrain;
   }
+
+  public getId() {
+    return this.id
+  }
 }
 
 export default Planet;

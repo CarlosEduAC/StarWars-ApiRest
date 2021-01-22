@@ -1,11 +1,24 @@
 import request from 'supertest';
 import { ObjectID } from 'mongodb';
-import { getMongoRepository } from "typeorm";
+import { getMongoRepository, getConnection } from "typeorm";
 
 import app from '../../app';
+
+import createConnection from '../../database';
+
 import Planet from '../../models/Planet';
 
 describe('Planet', () => {
+  beforeAll(async () => {
+    await createConnection();
+  });
+
+  afterAll(async () => {
+    const connection = await getConnection();
+
+    connection.close();
+  });
+
   it('should be able to list the planets', async (done) => {
     await request(app).post('/planets').send({
       name: 'Tatooine',
@@ -23,6 +36,13 @@ describe('Planet', () => {
 
     expect(response.body.planets).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(String),
+          name: 'Tatooine',
+          climate: 'Arid',
+          terrain: 'Desert',
+          numberOfFilms: 5
+        }),
         expect.objectContaining({
           id: expect.any(String),
           name: 'Alderaan',
