@@ -1,0 +1,273 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "StarWars ApiRest",
+    "description": "Uma ApIRest para gerenciar seus planetas do universo StarWars.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [{
+      "url": "/",
+      "description": "Local Dev, or from Heroku"
+    }
+  ],
+  "tags": [{
+    "name": "Planets",
+    "description": "API for planets in the Star Wars universe"
+  }],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/planets": {
+      "get": {
+        "tags": [
+          "Planets"
+        ],
+        "summary": "Get all planets in Star Wars universe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Planets"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Planets"
+        ],
+        "summary": "Create a new planets in Star Wars universe",
+        "requestBody": {
+          "description": "Planet Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Planet"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/planets/{id}": {
+      "parameters": [{
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "ID of the planet that we want to find",
+        "type": "string"
+      }],
+      "get": {
+        "tags": [
+          "Planets"
+        ],
+        "summary": "Get planet with given ID",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "description": "Planet with id",
+          "schema": {
+            "$ref": "#/definitions/id"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          },
+          "404": {
+            "description": "Failed. Planet not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update planet with given ID",
+        "tags": [
+          "Planets"
+        ],
+        "requestBody": {
+          "description": "Planet Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/PlanetPut"
+              }
+            }
+          }
+        },
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "description": "Planet with new values of properties",
+          "schema": {
+            "$ref": "#/definitions/id"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          },
+          "404": {
+            "description": "Failed. PLanet not found."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete planet with given ID",
+        "tags": [
+          "Planets"
+        ],
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "description": "Delete Planet with id",
+          "schema": {
+            "$ref": "#/definitions/id"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "404": {
+            "description": "Failed. Planet not found."
+          }
+        }
+      }
+    },
+    "/planets/name/{name}": {
+      "parameters": [{
+        "name": "name",
+        "in": "path",
+        "required": true,
+        "description": "Name of the planet that we want to find",
+        "type": "string"
+      }],
+      "get": {
+        "tags": [
+          "Planets"
+        ],
+        "summary": "Get planet with given name",
+        "parameters": [{
+          "in": "path",
+          "name": "name",
+          "required": true,
+          "description": "Planet with name",
+          "schema": {
+            "$ref": "#/definitions/name"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          },
+          "404": {
+            "description": "Failed. Planet not found."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "name": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Planet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "climate": {
+          "type": "string"
+        },
+        "terrain": {
+          "type": "string"
+        }
+      }
+    },
+    "PlanetPut": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "climate": {
+          "type": "string"
+        },
+        "numberOfFilms": {
+          "type": "number"
+        },
+        "terrain": {
+          "type": "string"
+        }
+      }
+    },
+    "Planets": {
+      "type": "object",
+      "properties": {
+        "planets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Planet"
+          }
+        }
+      }
+    }
+  }
+}
