@@ -8,5 +8,9 @@ module.exports = {
   "synchronize": true,
   "logging": true,
   "ssl": true,
-  "entities": ["dist/models/**/*.js"]
+  "entities": [
+    process.env.NODE_ENV === 'production' ?
+    process.env.ENTITIES_PRODUCTION :
+    process.env.ENTITIES_DEVELOPMENT,
+  ]
 }
