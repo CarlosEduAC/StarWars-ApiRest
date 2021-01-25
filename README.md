@@ -1,5 +1,7 @@
-<div class="bg-gray-dark" align="center">
-  # Desafio Star Wars ApiRest
+<div class="bg-gray-dark">
+  <h1 align="center">
+    Desafio Star Wars ApiRest
+  </h1>
 </div>
 
 <p align="center">
