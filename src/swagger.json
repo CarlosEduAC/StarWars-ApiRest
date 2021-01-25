@@ -169,6 +169,9 @@
           },
           "404": {
             "description": "Failed. Planet not found."
+          },
+          "204": {
+            "description": "Deleted. Np Content."
           }
         }
       }
