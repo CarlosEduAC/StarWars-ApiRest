@@ -1,7 +1,5 @@
-<div class="bg-gray-dark">
-  <h1 align="center">
-    # Desafio Star Wars ApiRest
-  </h1>
+<div class="bg-gray-dark" align="center">
+  # Desafio Star Wars ApiRest
 </div>
 
 <p align="center">
@@ -41,7 +39,7 @@
 Construção de uma API REST que contém os dados dos planetas da franquia Star Wars.
 Para cada planeta se faz necessário obter o nome, clima e terreno inserido manualmente.
 Além disso devemos ter a quantidade de aparições em filmes, que podem ser obtidas pela
-API públic do [Star Wars](https://swapi.dev/about)
+API públic do [Star Wars](https://swapi.dev/about).
 
 A estrutura do projeto é simples e seguindo boas práticas, porém preparada para adição de
 conceitos como DDD e CQRS que permitem uma maior qualidade, escalabilidade, disponibilidade e entendimento do contexto do projeto.
