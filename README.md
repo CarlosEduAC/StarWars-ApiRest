@@ -114,7 +114,7 @@ Uma outra opção é o [Insominia](https://insomnia.rest/), que diferente do [Sw
 
 ```bash
 # Clone o Repositoria
-$ git clone https://github.com/CarlosEduAC/StarWars-WebApiRestWithNode.git
+$ git clone https://github.com/CarlosEduAC/StarWars-ApiRest
 ```
 
 ```bash
