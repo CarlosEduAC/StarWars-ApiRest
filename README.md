@@ -9,15 +9,15 @@
     <img alt="Carlos Cardoso" src="https://img.shields.io/badge/-CarlosEAC-009db9?style=flat&logo=Linkedin&logoColor=white" />
   </a>
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/CarlosEduAC/Happy?color=009bd9">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/CarlosEduAC/StarWars-ApiRest?color=009bd9">
 
   <a href="https://github.com/CarlosEduAC/StarWars-WebApiRestWithNode/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CarlosEduAC/Happy?color=009bd9">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CarlosEduAC/StarWars-ApiRest?color=009bd9">
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-009db9">
 
-  <a href="https://github.com/CarlosEduAC/Happy/stargazers">
+  <a href="https://github.com/CarlosEduAC/StarWars-ApiRest/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/CarlosEduAC/StarWars-ApiRest?color=009db9&logo=github">
   </a>
 </p>
